@@ -1,6 +1,6 @@
 package chapterTwo
 
-import chapterTwo.Curry.{curry, unCurry}
+import chapterTwo.Curry.{compose, curry, unCurry}
 import org.scalatest.FunSuite
 
 class CurryTest extends FunSuite {
@@ -24,5 +24,16 @@ class CurryTest extends FunSuite {
 
     assert(unCurried(1, 5) === 6)
   }
+
+  test("Compose test") {
+    def multiplyByTwo(a: Int): Int = a * 2
+
+    def prettyString(a: Int): String = s"Pretty Int: $a"
+
+    val multiplyByTwoAndPrettyString = compose(prettyString, multiplyByTwo)
+
+    assert(multiplyByTwoAndPrettyString(7) === "Pretty Int: 14")
+  }
+
 
 }
