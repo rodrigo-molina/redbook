@@ -11,4 +11,10 @@ class FibonacciTest extends FunSuite {
       assert(Fibonacci.series(i._2 + 1) === i._1)
     }
   }
+
+  expectedSeries.zipWithIndex.foreach { i =>
+    test(s"Fibonacci TailRec Implementation of ${i._2 + 1} is ${i._1}") {
+      assert(Fibonacci.seriesTailRec(i._2 + 1) === i._1)
+    }
+  }
 }
