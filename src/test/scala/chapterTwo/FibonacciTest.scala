@@ -1,5 +1,6 @@
 package chapterTwo
 
+import chapterTwo.ArrayVerifier.isSorted
 import org.scalatest.FunSuite
 
 class FibonacciTest extends FunSuite {
@@ -16,5 +17,10 @@ class FibonacciTest extends FunSuite {
     test(s"Fibonacci TailRec Implementation of ${i._2 + 1} is ${i._1}") {
       assert(Fibonacci.seriesTailRec(i._2 + 1) === i._1)
     }
+  }
+
+  test("Illegal argument when parameter is not a natural number") {
+    assertThrows[IllegalArgumentException](Fibonacci.seriesTailRec(0));
+    assertThrows[IllegalArgumentException](Fibonacci.seriesTailRec(-1));
   }
 }
